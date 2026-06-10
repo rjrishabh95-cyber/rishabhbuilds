@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #0A0A0A;
+  --color-accent: #E8500A;
+  --color-signal: #F0F0F0;
+  --color-card: #2A2A2A;
+
+  --font-headline: "EB Garamond", serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+:root {
+  --bg: #0A0A0A;
+  --accent: #E8500A;
+  --signal: #F0F0F0;
+  --card: #2A2A2A;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  background: #0A0A0A;
+}
+
+body {
+  overflow: hidden;
+}
+
+button {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background: none;
+}
+
+button:focus-visible {
+  outline: 2px solid #E8500A;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
