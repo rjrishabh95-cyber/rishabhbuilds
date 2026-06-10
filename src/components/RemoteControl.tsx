@@ -1,5 +1,4 @@
 import { motion } from 'framer-motion'
-import { useRef, useEffect } from 'react'
 
 interface RemoteControlProps {
   onChannelSelect: (channel: string) => void
@@ -82,29 +81,12 @@ const chanBtnBase: React.CSSProperties = {
 export default function RemoteControl({
   onChannelSelect,
   onPowerToggle,
-  isPowered,
   onVolumeUp,
   onVolumeDown,
 }: RemoteControlProps) {
-  const imgRef = useRef<HTMLImageElement>(null)
-
-  useEffect(() => {
-    const img = imgRef.current
-    if (!img) return
-    const r = img.getBoundingClientRect()
-    console.log(
-      `[Remote] rendered ${r.width.toFixed(1)}×${r.height.toFixed(1)}px`,
-      `slot left=${(r.width * SLOT_LEFT / 100).toFixed(1)}px`,
-      `width=${(r.width * SLOT_WIDTH / 100).toFixed(1)}px`,
-      `slot0_top=${(r.height * SLOT_TOPS[0] / 100).toFixed(1)}px`,
-      `vol_top=${(r.height * VOL_TOP / 100).toFixed(1)}px`,
-    )
-  }, [])
-
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       <img
-        ref={imgRef}
         src="/newremote.png"
         alt="Remote control"
         draggable={false}
