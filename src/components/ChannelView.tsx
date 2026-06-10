@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import ProjectsChannel from './projects/ProjectsChannel'
 
 interface ChannelViewProps {
   channel: string
@@ -36,111 +37,118 @@ export default function ChannelView({ channel, onBack }: ChannelViewProps) {
       }}
       transition={{ type: 'spring', stiffness: 110, damping: 22 }}
     >
-      {/* Back button — fades in after zoom animation settles */}
-      <motion.button
-        aria-label="Back to TV"
-        initial={{ opacity: 0, x: -8 }}
-        animate={{ opacity: 1, x: 0 }}
-        exit={{ opacity: 0, x: -8 }}
-        transition={{ delay: 0.45, duration: 0.25 }}
-        onClick={onBack}
-        style={{
-          position: 'absolute',
-          top: '1.75rem',
-          left: '2rem',
-          fontFamily: '"JetBrains Mono", monospace',
-          fontSize: '0.75rem',
-          textTransform: 'uppercase',
-          letterSpacing: '0.14em',
-          color: '#E8500A',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '0.5rem',
-        }}
-      >
-        ← Back
-      </motion.button>
-
-      {/* Loading text — fades in after zoom animation settles */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        transition={{ delay: 0.4, duration: 0.3 }}
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          gap: '1.25rem',
-          userSelect: 'none',
-        }}
-      >
-        {/* Channel label */}
-        <div
-          style={{
-            fontFamily: '"JetBrains Mono", monospace',
-            fontSize: 'clamp(0.65rem, 1vw, 0.85rem)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.25em',
-            color: 'rgba(240,240,240,0.35)',
-          }}
-        >
-          {label}
-        </div>
-
-        {/* Loading message + blinking cursor */}
-        <div
-          style={{
-            fontFamily: '"JetBrains Mono", monospace',
-            fontSize: 'clamp(0.85rem, 1.4vw, 1.1rem)',
-            textTransform: 'uppercase',
-            letterSpacing: '0.2em',
-            color: '#F0F0F0',
-            display: 'flex',
-            alignItems: 'center',
-          }}
-        >
-          Channel Loading...
-          <motion.span
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
+      {/* PROJECTS channel: full custom screen — handles its own back button */}
+      {channel === 'projects' ? (
+        <ProjectsChannel onBack={onBack} />
+      ) : (
+        <>
+          {/* Back button — fades in after zoom animation settles */}
+          <motion.button
+            aria-label="Back to TV"
+            initial={{ opacity: 0, x: -8 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -8 }}
+            transition={{ delay: 0.45, duration: 0.25 }}
+            onClick={onBack}
             style={{
+              position: 'absolute',
+              top: '1.75rem',
+              left: '2rem',
+              fontFamily: '"JetBrains Mono", monospace',
+              fontSize: '0.75rem',
+              textTransform: 'uppercase',
+              letterSpacing: '0.14em',
               color: '#E8500A',
-              marginLeft: '2px',
-              display: 'inline-block',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
             }}
           >
-            |
-          </motion.span>
-        </div>
+            ← Back
+          </motion.button>
 
-        {/* Subtle scanline divider */}
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: '120px' }}
-          transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
-          style={{
-            height: '1px',
-            background:
-              'linear-gradient(90deg, transparent, rgba(232,80,10,0.5), transparent)',
-          }}
-        />
-      </motion.div>
+          {/* Loading text — fades in after zoom animation settles */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ delay: 0.4, duration: 0.3 }}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '1.25rem',
+              userSelect: 'none',
+            }}
+          >
+            {/* Channel label */}
+            <div
+              style={{
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: 'clamp(0.65rem, 1vw, 0.85rem)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.25em',
+                color: 'rgba(240,240,240,0.35)',
+              }}
+            >
+              {label}
+            </div>
 
-      {/* Subtle corner scanline overlay — Phase 2 content replaces this area */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          background:
-            'repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 1px, transparent 1px, transparent 4px)',
-        }}
-      />
+            {/* Loading message + blinking cursor */}
+            <div
+              style={{
+                fontFamily: '"JetBrains Mono", monospace',
+                fontSize: 'clamp(0.85rem, 1.4vw, 1.1rem)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.2em',
+                color: '#F0F0F0',
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              Channel Loading...
+              <motion.span
+                animate={{ opacity: [1, 0, 1] }}
+                transition={{ repeat: Infinity, duration: 0.9, ease: 'linear' }}
+                style={{
+                  color: '#E8500A',
+                  marginLeft: '2px',
+                  display: 'inline-block',
+                }}
+              >
+                |
+              </motion.span>
+            </div>
+
+            {/* Subtle scanline divider */}
+            <motion.div
+              initial={{ width: 0 }}
+              animate={{ width: '120px' }}
+              transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
+              style={{
+                height: '1px',
+                background:
+                  'linear-gradient(90deg, transparent, rgba(232,80,10,0.5), transparent)',
+              }}
+            />
+          </motion.div>
+
+          {/* Subtle scanline overlay */}
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              pointerEvents: 'none',
+              background:
+                'repeating-linear-gradient(0deg, rgba(0,0,0,0.06) 0px, rgba(0,0,0,0.06) 1px, transparent 1px, transparent 4px)',
+            }}
+          />
+        </>
+      )}
     </motion.div>
   )
 }

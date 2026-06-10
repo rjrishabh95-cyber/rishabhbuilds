@@ -113,22 +113,22 @@ export default function TVScene({
                 >
                   <div
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
-                      fontSize: 'clamp(0.45rem, 0.7vw, 0.65rem)',
+                      fontFamily: '"Press Start 2P", sans-serif',
+                      fontSize: 'clamp(0.35rem, 0.55vw, 0.5rem)',
+                      color: '#00FF41',
+                      textShadow: '0 0 10px rgba(0,255,65,0.8)',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.25em',
-                      color: 'rgba(240,240,240,0.35)',
                     }}
                   >
                     {CHANNEL_LABELS[loadingChannel] ?? 'CHANNEL'}
                   </div>
                   <div
                     style={{
-                      fontFamily: '"JetBrains Mono", monospace',
-                      fontSize: 'clamp(0.55rem, 0.85vw, 0.75rem)',
+                      fontFamily: '"Press Start 2P", sans-serif',
+                      fontSize: 'clamp(0.4rem, 0.65vw, 0.6rem)',
+                      color: '#00FF41',
+                      textShadow: '0 0 10px rgba(0,255,65,0.8)',
                       textTransform: 'uppercase',
-                      letterSpacing: '0.2em',
-                      color: '#F0F0F0',
                     }}
                   >
                     CHANNEL LOADING...
