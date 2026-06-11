@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import ActivationProblemDetail from './ActivationProblemDetail'
 
 type Category = 'product-growth' | 'side-projects'
 
@@ -85,24 +86,31 @@ function StarfieldCanvas() {
   )
 }
 
-// ─── Placeholder data ─────────────────────────────────────────────────────────
+// ─── Project data ─────────────────────────────────────────────────────────────
 
 interface Project {
   id: string
   name: string
-  description: string
+  company: string
+  metric: string
+  thumbnail?: string
 }
 
 const PROJECTS: Record<Category, Project[]> = {
-  'product-growth': Array.from({ length: 6 }, (_, i) => ({
-    id: `pg-${i}`,
-    name: 'PROJECT NAME',
-    description: 'One line description here',
-  })),
+  'product-growth': [
+    { id: 'pg-0', name: 'ACTIVATION PROBLEM',             company: 'Draconic AI', metric: '22% → 38% retention', thumbnail: '/images/activation-problem/thumbnail.webp' },
+    { id: 'pg-1', name: 'GROWTH FROM ZERO',               company: 'Draconic AI', metric: '0 → 20,000 users' },
+    { id: 'pg-2', name: 'MAKING TRADERS UNDERSTAND AI',   company: 'Draconic AI', metric: '500 user interviews' },
+    { id: 'pg-3', name: 'SHIPPING CREATIVE END TO END',   company: 'Draconic AI', metric: 'Videos, ads, brand — all owned' },
+    { id: 'pg-4', name: 'AUTOMATING THE GROWTH STACK',    company: 'Draconic AI', metric: 'Email, Telegram, CRM — built in-house' },
+    { id: 'pg-5', name: 'BUILDING CREDIT FOR THE INVISIBLE', company: 'FinLe',   metric: '18% → 42% conversion' },
+    { id: 'pg-6', name: 'CLOSING THE FUNDING GAP',        company: 'FinLe',      metric: '2 NBFC partnerships closed' },
+  ],
   'side-projects': Array.from({ length: 6 }, (_, i) => ({
     id: `sp-${i}`,
     name: 'PROJECT NAME',
-    description: 'One line description here',
+    company: 'COMPANY',
+    metric: 'One line metric here',
   })),
 }
 
@@ -126,9 +134,9 @@ function ProjectCard({
       tabIndex={0}
       onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') onView(project) }}
       style={{
-        border: `2px solid ${hovered ? '#00FF41' : 'rgba(0,255,65,0.4)'}`,
-        boxShadow: hovered ? '0 0 12px rgba(0,255,65,0.35)' : 'none',
-        background: '#111',
+        background: '#0A0A0A',
+        border: `2px solid ${hovered ? '#00FF41' : 'rgba(0,255,65,0.3)'}`,
+        boxShadow: hovered ? '0 0 18px rgba(0,255,65,0.4)' : 'none',
         cursor: 'pointer',
         display: 'flex',
         flexDirection: 'column',
@@ -137,15 +145,31 @@ function ProjectCard({
     >
       {/* Thumbnail — 16:9 */}
       <div style={{ position: 'relative', width: '100%', paddingTop: '56.25%', overflow: 'hidden' }}>
-        <div
-          style={{
-            position: 'absolute',
-            inset: 0,
-            background: hovered ? '#2a2a2a' : '#1a1a1a',
-            transition: 'background 0.15s',
-          }}
-        />
-        {/* Scanline overlay on thumbnail */}
+        {project.thumbnail ? (
+          <img
+            src={project.thumbnail}
+            alt={project.name}
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              opacity: hovered ? 1 : 0.85,
+              transition: 'opacity 0.15s',
+            }}
+          />
+        ) : (
+          <div
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background: hovered ? '#242424' : '#1A1A1A',
+              transition: 'background 0.15s',
+            }}
+          />
+        )}
+        {/* Scanline overlay */}
         <div
           aria-hidden="true"
           style={{
@@ -161,13 +185,14 @@ function ProjectCard({
       {/* Card body */}
       <div
         style={{
-          padding: '0.75rem',
+          padding: '0.85rem 0.85rem 0.75rem',
           flex: 1,
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.4rem',
+          gap: '0.35rem',
         }}
       >
+        {/* Project name */}
         <span
           style={{
             fontFamily: '"Press Start 2P", sans-serif',
@@ -178,20 +203,34 @@ function ProjectCard({
         >
           {project.name}
         </span>
+
+        {/* Company subtext */}
         <span
           style={{
             fontFamily: '"JetBrains Mono", monospace',
-            fontSize: '11px',
-            color: 'rgba(240,240,240,0.6)',
-            lineHeight: 1.5,
+            fontSize: '10px',
+            color: 'rgba(0,255,65,0.7)',
+            lineHeight: 1.4,
+          }}
+        >
+          {project.company}
+        </span>
+
+        {/* Metric hook */}
+        <span
+          style={{
+            fontFamily: '"JetBrains Mono", monospace',
+            fontSize: '10px',
+            color: 'rgba(240,240,240,0.5)',
+            lineHeight: 1.4,
             flex: 1,
           }}
         >
-          {project.description}
+          {project.metric}
         </span>
 
-        {/* VIEW button row */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.5rem' }}>
+        {/* VIEW button */}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '0.6rem' }}>
           <button
             onClick={(e) => { e.stopPropagation(); onView(project) }}
             style={{
@@ -237,7 +276,7 @@ function ProjectModal({
         position: 'fixed',
         inset: 0,
         zIndex: 50,
-        background: 'rgba(10,10,10,0.92)',
+        background: 'rgba(10,10,10,0.96)',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -284,7 +323,7 @@ function ProjectModal({
 
 const CHANNEL_LABEL: Record<Category, string> = {
   'product-growth': 'CH_01 — PRODUCT & GROWTH',
-  'side-projects': 'CH_01 — SIDE PROJECTS',
+  'side-projects': 'CH_02 — SIDE PROJECTS',
 }
 
 export default function ProjectsGridScreen({ category, onBack }: Props) {
@@ -369,10 +408,10 @@ export default function ProjectsGridScreen({ category, onBack }: Props) {
           style={{
             flex: 1,
             overflowY: 'auto',
-            padding: '1.5rem',
+            padding: '2rem 1.5rem',
           }}
         >
-          <div className="projects-grid">
+          <div className="projects-grid" style={{ gap: '1.75rem' }}>
             {projects.map((project) => (
               <ProjectCard key={project.id} project={project} onView={setActiveProject} />
             ))}
@@ -393,8 +432,13 @@ export default function ProjectsGridScreen({ category, onBack }: Props) {
         }}
       />
 
-      {/* Modal */}
-      {activeProject && (
+      {/* Detail page for Activation Problem */}
+      {activeProject?.id === 'pg-0' && (
+        <ActivationProblemDetail onClose={() => setActiveProject(null)} />
+      )}
+
+      {/* Generic modal for all other cards */}
+      {activeProject && activeProject.id !== 'pg-0' && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
       )}
     </div>
