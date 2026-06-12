@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 
 interface Props {
   onClose: () => void
+  thumbnail?: string
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -161,7 +162,7 @@ function Prose({ text }: { text: string }) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-export default function ActivationProblemDetail({ onClose }: Props) {
+export default function ActivationProblemDetail({ onClose, thumbnail }: Props) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
@@ -224,21 +225,29 @@ export default function ActivationProblemDetail({ onClose }: Props) {
       </div>
 
       {/* Scrollable body */}
-      <div
-        style={{
-          flex: 1,
-          overflowY: 'auto',
-          padding: '4rem 2rem 6rem',
-        }}
-      >
+      <div style={{ flex: 1, overflowY: 'auto' }}>
+        <div style={{ padding: '4rem 2rem 6rem' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
 
-          {/* Logo */}
-          <img
-            src="/images/activation-problem/logo.png"
-            alt="Draconic AI"
-            style={{ height: '40px', width: 'auto', display: 'block', marginBottom: '2rem' }}
-          />
+          {/* Hero image — constrained to content column */}
+          {thumbnail && (
+            <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', marginBottom: '3rem' }}>
+              <img
+                src={thumbnail}
+                alt=""
+                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+              />
+              <div
+                aria-hidden="true"
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  background: 'repeating-linear-gradient(0deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 2px, transparent 2px, transparent 6px)',
+                  pointerEvents: 'none',
+                }}
+              />
+            </div>
+          )}
 
           {/* Title */}
           <h1
@@ -361,6 +370,7 @@ export default function ActivationProblemDetail({ onClose }: Props) {
             <Prose text={RESULT} />
           </section>
 
+        </div>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import ActivationProblemDetail from './ActivationProblemDetail'
+import GrowthFromZeroDetail from './GrowthFromZeroDetail'
 
 type Category = 'product-growth' | 'side-projects'
 
@@ -91,25 +92,23 @@ function StarfieldCanvas() {
 interface Project {
   id: string
   name: string
-  company: string
   metric: string
   thumbnail?: string
 }
 
 const PROJECTS: Record<Category, Project[]> = {
   'product-growth': [
-    { id: 'pg-0', name: 'ACTIVATION PROBLEM',             company: 'Draconic AI', metric: '22% → 38% retention', thumbnail: '/images/activation-problem/thumbnail.webp' },
-    { id: 'pg-1', name: 'GROWTH FROM ZERO',               company: 'Draconic AI', metric: '0 → 20,000 users' },
-    { id: 'pg-2', name: 'MAKING TRADERS UNDERSTAND AI',   company: 'Draconic AI', metric: '500 user interviews' },
-    { id: 'pg-3', name: 'SHIPPING CREATIVE END TO END',   company: 'Draconic AI', metric: 'Videos, ads, brand — all owned' },
-    { id: 'pg-4', name: 'AUTOMATING THE GROWTH STACK',    company: 'Draconic AI', metric: 'Email, Telegram, CRM — built in-house' },
-    { id: 'pg-5', name: 'BUILDING CREDIT FOR THE INVISIBLE', company: 'FinLe',   metric: '18% → 42% conversion' },
-    { id: 'pg-6', name: 'CLOSING THE FUNDING GAP',        company: 'FinLe',      metric: '2 NBFC partnerships closed' },
+    { id: 'pg-0', name: 'ACTIVATION PROBLEM',                metric: '22% → 38% retention', thumbnail: '/images/activation-problem/thumbnail.webp' },
+    { id: 'pg-1', name: 'GROWTH FROM ZERO',                  metric: '0 → 20,000 users',                    thumbnail: '/images/activation-problem/thumb2.webp' },
+    { id: 'pg-2', name: 'MAKING TRADERS UNDERSTAND AI',      metric: '500 user interviews',                   thumbnail: '/images/activation-problem/thumb3.webp' },
+    { id: 'pg-3', name: 'SHIPPING CREATIVE END TO END',      metric: 'Videos, ads, brand — all owned',        thumbnail: '/images/activation-problem/thumb4.webp' },
+    { id: 'pg-4', name: 'AUTOMATING THE GROWTH STACK',       metric: 'Email, Telegram, CRM — built in-house', thumbnail: '/images/activation-problem/thumb5.webp' },
+    { id: 'pg-5', name: 'BUILDING CREDIT FOR THE INVISIBLE', metric: '18% → 42% conversion',                  thumbnail: '/images/activation-problem/thumb6.webp' },
+    { id: 'pg-6', name: 'CLOSING THE FUNDING GAP',           metric: '2 NBFC partnerships closed',            thumbnail: '/images/activation-problem/thumb7.webp' },
   ],
   'side-projects': Array.from({ length: 6 }, (_, i) => ({
     id: `sp-${i}`,
     name: 'PROJECT NAME',
-    company: 'COMPANY',
     metric: 'One line metric here',
   })),
 }
@@ -202,18 +201,6 @@ function ProjectCard({
           }}
         >
           {project.name}
-        </span>
-
-        {/* Company subtext */}
-        <span
-          style={{
-            fontFamily: '"JetBrains Mono", monospace',
-            fontSize: '10px',
-            color: 'rgba(0,255,65,0.7)',
-            lineHeight: 1.4,
-          }}
-        >
-          {project.company}
         </span>
 
         {/* Metric hook */}
@@ -432,13 +419,16 @@ export default function ProjectsGridScreen({ category, onBack }: Props) {
         }}
       />
 
-      {/* Detail page for Activation Problem */}
+      {/* Detail pages */}
       {activeProject?.id === 'pg-0' && (
-        <ActivationProblemDetail onClose={() => setActiveProject(null)} />
+        <ActivationProblemDetail onClose={() => setActiveProject(null)} thumbnail={activeProject.thumbnail} />
+      )}
+      {activeProject?.id === 'pg-1' && (
+        <GrowthFromZeroDetail onClose={() => setActiveProject(null)} thumbnail={activeProject.thumbnail} />
       )}
 
-      {/* Generic modal for all other cards */}
-      {activeProject && activeProject.id !== 'pg-0' && (
+      {/* Generic modal for cards without a detail page yet */}
+      {activeProject && !['pg-0', 'pg-1'].includes(activeProject.id) && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
       )}
     </div>
