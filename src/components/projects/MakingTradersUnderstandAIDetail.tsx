@@ -8,58 +8,51 @@ interface Props {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: '0 → 20,000+', label: 'Users Acquired' },
-  { value: '40%',          label: 'Acquisition Through Organic Channels' },
-  { value: '20+',          label: 'Platforms Listed On' },
+  { value: '22% → 38%', label: '7-Day Retention' },
+  { value: '500+',       label: 'User Interviews Conducted' },
+  { value: '3',          label: 'Video Series Produced' },
 ]
 
-const PROBLEM = `When the growth engine needed to be built, nothing existed. No paid campaigns, no content calendar, no influencer relationships, no SEO foundation, no community presence. Draconic was a genuinely new product in a category that did not exist yet, an AI co-pilot for traders, which meant there was no established playbook to follow and no obvious audience to target.
+const PROBLEM = `Draconic was a genuinely new product in a category that did not exist yet. The challenge was not just getting users to open the app. It was getting them to understand what AI-assisted trading even meant, what kind of questions were worth asking, and why the answers they were getting were fundamentally different from anything a chart or indicator could show them. Without that understanding, the product could not retain anyone regardless of how good it was.`
 
-The challenge was not just acquiring users. It was finding and convincing an audience that had never used anything like this before, across every channel simultaneously, starting from zero.`
+const APPROACH_INTRO = `Before anything was built or written, a playbook was made for each channel. The thinking came first, always. Every touchpoint a user would encounter — inside the product, in their inbox, in videos — was designed around one question: does this help someone understand AI-assisted trading better than they did before they saw it?`
 
-const APPROACH_INTRO = `Every channel was built from scratch. Before anything was executed, a playbook was built for each one. Execution followed the playbook, and the playbook evolved based on what the data showed.`
-
-const CHANNELS: { name: string; description: string; image?: string }[] = [
+const FEATURES: { name: string; description: string; image?: string }[] = [
   {
-    name: 'Paid: Google and Meta',
-    description: `Built and ran Search, PMAX, and Meta campaigns simultaneously. The creative strategy started with a question: what does a trader who has never used AI actually need to hear before they would consider trying it? Three themes emerged from that research. Ask Before You Trade spoke to the trader who was making decisions on incomplete information. Institutional Access spoke to the retail trader who always felt locked out of the kind of analysis that professional desks had. See Beyond Price spoke to the trader who knew charts alone were not telling the full story. Each theme had its own visuals, ad copy, headlines, and description variations — 15 to 20 ads tested per campaign. Weekly optimization using Claude with MCP integration, pulling performance data and making changes based on what was working. Google Ads cost per lead came down to 47 INR.`,
-    image: '/images/growth-from-zero/google-ads.webp',
+    name: 'In-product Playbook',
+    description: `The realization was simple: users were walking into a product category that had no reference point. There was nothing to compare it to, no existing mental model to borrow from. A tooltip tour would not fix that. What was needed was a proper learning system, a structured guidebook built the way SaaS companies build their documentation, covering every concept, every piece of jargon, every feature, and every real-world use case. The goal was not to explain the product. It was to give users the foundation to teach themselves.`,
+    image: '/images/activation-problem/playbook.webp',
   },
   {
-    name: 'Twitter',
-    description: `Exported and analyzed the full tweet history of competitor AI companies and trading platforms using Claude before writing a single tweet. Built a monthly content calendar of 40 high-impact pieces across six formats based on what the analysis showed actually worked. High quality images generated and paired with every visual tweet. Every piece written to make users feel understood, not sold to.`,
-    image: '/images/growth-from-zero/twitter.webp',
+    name: 'Prompt Launcher as Education',
+    description: `The prompt launcher solved two problems at once. On the surface it removed friction from the first interaction. But the deeper thinking was that every category, every subcategory, and every ready-to-use prompt inside it was a lesson in disguise. Users were learning what questions were worth asking, what use cases existed, and what AI-assisted trading could actually do, without ever feeling like they were being taught. The curriculum was baked into the interface.`,
+    image: '/images/activation-problem/prompt-launcher.webp',
   },
   {
-    name: 'Content',
-    description: `Built three separate playbooks before posting anything: one for carousels, one for statics, one for reels. A unified monthly content calendar tied everything into a four week posting plan. At the end of every month, performance was analyzed and the next month doubled down on what worked.`,
-    image: '/images/growth-from-zero/content.webp',
+    name: 'Gamified Onboarding Journey',
+    description: `The thinking behind this was that understanding does not happen in one session. It builds over time. A one-shot tutorial on day one gets ignored because the user has not had enough experience with the product to know what they do not know yet. Built a progressive discovery system instead: one that surfaces the right concept at the right moment based on where the user actually is in their journey. The more someone used the product, the more they unlocked. Guidance that felt like discovery rather than instruction.`,
+    image: '/images/activation-problem/onboarding-journey.webp',
   },
   {
-    name: 'Influencer Partnerships',
-    description: `Partnered with influencers across YouTube, Telegram, Instagram, and Reddit through both agencies and direct outreach. The decision to evaluate every partnership on audience fit rather than follower count came from a simple insight: a trading platform needs users who actually trade, not users who happen to follow a finance page. A smaller channel with an engaged community of active traders was worth more than a large channel with passive followers.`,
-    image: '/images/growth-from-zero/influencers.webp',
+    name: 'Visual Templates',
+    description: `The insight came from watching how users consumed responses: walls of text were being skipped. Traders are visual by nature. They read charts, not paragraphs. Ideated a first-of-its-kind interface where Draconic would show annotated charts alongside its analysis: swing highs, swing lows, key levels already marked and labeled. Two instruments compared side by side on different timeframes. The visual and the explanation together, not one after the other. Users could see what the AI was reading, not just what it was concluding. The ideation and product direction were owned completely, execution was handed to the team.`,
+    image: '/images/making-traders-understand-ai/visual-templates.webp',
   },
   {
-    name: 'SEO, AEO and PR',
-    description: `Built a keyword-driven blog playbook with every article written to be SEO friendly and backed with backlinks. A separate playbook was built for what to write on each listing platform. Listed Draconic on more than 20 discovery platforms including Product Hunt and BetaList. Articles placed through PR agencies for press coverage and high quality backlinks simultaneously.`,
-    image: '/images/growth-from-zero/seo-pr.webp',
+    name: 'Demo and Feature Videos',
+    description: `Videos were built because some things cannot be explained in text. Three formats were developed for three different purposes: feature videos for users who wanted to understand one specific capability in depth, demo videos for users who needed to see the full product experience end to end, and workflow videos for users who wanted to see how Draconic fits into an actual trading session. One workflow series was conceptualized, scripted, and blueprinted as a complete episode guide then handed to a professional trader to execute. Every video was scripted and storyboarded before a single frame was recorded.`,
+    image: '/images/making-traders-understand-ai/videos.webp',
   },
   {
-    name: 'Reddit',
-    description: `Ran multiple Reddit campaigns across trading communities to build organic presence. Indian Street Bets was the anchor partnership — the largest trading community on Reddit — securing a pinned post and logo placement as the community cover photo. The logic was to go where the highest concentration of active traders already were, establish credibility there first, and use that as the foundation for broader community presence.`,
-    image: '/images/growth-from-zero/reddit.webp',
-  },
-  {
-    name: 'Telegram Community',
-    description: `Built a content playbook for the Telegram community covering what gets posted, when, and why. Treated as a product touchpoint, not a broadcast channel.`,
+    name: 'Weekly Educational Email Series',
+    description: `The thinking behind the email program was that education cannot happen in one email. Built a full editorial system structured around weekly themes, with three emails per week serving three different purposes: one to introduce a concept, one to show it in action, one to show Draconic surfacing it so users could replicate it themselves. Before any email was written, a full playbook governed every decision: the tone for each email type, the structure, how Draconic should appear in the explanation, what subject lines should do, and what the sign-off should never say. The emails were not plain text blasts. Each one was designed as a proper HTML email, built and imported into Kit, with user segments determining who received what based on their market preference, usage behavior, and where they were in their journey with the product. The discipline came from the playbook. The playbook came from the thinking.`,
+    image: '/images/making-traders-understand-ai/emails.webp',
   },
 ]
 
-const RESULT = `Built the entire growth engine from zero across every channel simultaneously. Organic and content channels drove 40% of all customer acquisition. Google Ads cost per lead came down to 47 INR. The growth was not the result of one channel working. It was the result of every channel being built on a playbook, executed consistently, and optimized based on data every single month.`
+const RESULT = `Seven-day retention moved from 22% to 38%. Users who previously churned after a few sessions started coming back consistently. The education system worked not because it was comprehensive, but because every piece of it was built with a clear point of view on what users needed to understand and when they needed to understand it.`
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
-
 
 function SectionHeading({ children }: { children: string }) {
   return (
@@ -102,7 +95,7 @@ function Prose({ text }: { text: string }) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
+export default function MakingTradersUnderstandAIDetail({ onClose, thumbnail }: Props) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
@@ -160,7 +153,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
             lineHeight: 1,
           }}
         >
-          Draconic AI · Growth
+          Draconic AI · Product &amp; Growth
         </span>
       </div>
 
@@ -169,7 +162,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
         <div style={{ padding: '4rem 2rem 6rem' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
 
-          {/* Hero image — constrained to content column */}
+          {/* Hero image */}
           {thumbnail && (
             <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', marginBottom: '3rem' }}>
               <img
@@ -200,7 +193,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
               marginBottom: '3rem',
             }}
           >
-            Growth from Zero
+            Making Traders Understand AI
           </h1>
 
           {/* Stats row */}
@@ -256,8 +249,8 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-              {CHANNELS.map((channel) => (
-                <div key={channel.name}>
+              {FEATURES.map((feature) => (
+                <div key={feature.name}>
                   <h3
                     style={{
                       fontFamily: '"EB Garamond", serif',
@@ -268,7 +261,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                       marginBottom: '0.75rem',
                     }}
                   >
-                    {channel.name}
+                    {feature.name}
                   </h3>
                   <p
                     style={{
@@ -278,12 +271,12 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                       lineHeight: 1.8,
                     }}
                   >
-                    {channel.description}
+                    {feature.description}
                   </p>
-                  {channel.image ? (
+                  {feature.image && (
                     <img
-                      src={channel.image}
-                      alt={channel.name}
+                      src={feature.image}
+                      alt={feature.name}
                       style={{
                         display: 'block',
                         width: '100%',
@@ -292,7 +285,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                         margin: '1.5rem auto 0',
                       }}
                     />
-                  ) : null}
+                  )}
                 </div>
               ))}
             </div>

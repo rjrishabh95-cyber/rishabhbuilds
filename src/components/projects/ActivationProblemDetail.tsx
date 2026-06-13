@@ -8,9 +8,9 @@ interface Props {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: '35%',       label: 'Activation Improvement' },
-  { value: '22% → 38%', label: '7-Day Retention' },
-  { value: '500+',      label: 'User Interviews Conducted' },
+  { value: '35%',  label: 'Activation Improvement' },
+  { value: '8',    label: 'Activation Features Shipped' },
+  { value: '500+', label: 'User Interviews Conducted' },
 ]
 
 const PROBLEM = `Draconic was one of the first AI co-pilots built for the full intraday trading cycle. The idea was genuinely new, a chat-based system that could sit alongside a trader through pre-trade research, live execution, and post-trade analysis. Nobody had built this before.
@@ -21,7 +21,9 @@ Activation sat at 22%. Retention was not following. The product worked. The user
 
 const APPROACH_INTRO = `Solving activation was not a one-time project. It was a continuous process of talking to users, identifying patterns, building solutions, measuring what changed, and going back to users again. More than 500 user interviews conducted over time shaped every decision made on this problem.
 
-Every feature went through the same process: user research to PRD to fully interactive prototype showing every interaction state, handed to design with documentation, translated into brand language, shipped to frontend.
+Every feature went through the same process: user research to fully interactive prototype showing every interaction state, handed to design with documentation, translated into brand language, shipped to frontend. Prototypes were the tool that compressed weeks of back and forth into days.
+
+A progressive onboarding journey was also built to keep users engaged and discovering new features beyond their first session — covered in depth in Making Traders Understand AI.
 
 The work happened across two layers: inside the product and outside it through email.`
 
@@ -30,11 +32,6 @@ const FEATURES: { name: string; description: string; image?: string; screenshotL
     name: 'Prompt Launcher',
     description: `The blank chat input was the single biggest drop-off point. Users had no idea where to start. Built a layered use case system living inside the text input itself: categories of trading scenarios, each breaking down into specific situations, each with ready-to-use prompts pre-filled with placeholder text. A user could go from opening the app to asking a meaningful, well-structured question in under ten seconds.`,
     image: '/images/activation-problem/prompt-launcher.webp',
-  },
-  {
-    name: 'Gamified Onboarding Journey',
-    description: `A one-shot tutorial on day one gets ignored. Built a progressive discovery system instead, a persistent companion that surfaces the right nudge at the right stage of a user's journey. The more someone used the product, the more they unlocked. Guidance that felt earned rather than forced.`,
-    image: '/images/activation-problem/onboarding-journey.webp',
   },
   {
     name: 'In-product Playbook',
@@ -53,17 +50,17 @@ const FEATURES: { name: string; description: string; image?: string; screenshotL
   },
   {
     name: 'Alerts Redesign',
-    description: `User research kept surfacing the same frustration: the alerts flow was confusing people. Where to start, what to tap, what would happen next. Rebuilt the entire UX and UI from the ground up with clearer flows, copy that matched how traders actually talk about alerts, and an interface that removed every point of hesitation.`,
+    description: `User research kept surfacing the same frustration: the alerts flow was confusing people. The instinct might have been to fix the copy and move on. But the thinking was that if users could not find their way through the flow at all, better labels on the same broken path would not help anyone. The decision was to rebuild the entire UX and UI from the ground up: new flows, new structure, copy that matched how users actually talk about alerts, and an interface where every next step was obvious.`,
     image: '/images/activation-problem/alerts.webp',
   },
   {
     name: 'Watchlist',
-    description: `Every trader has a watchlist in their broker. Built one inside Draconic that felt familiar but worked differently. Users save their instruments and can reference them directly inside any prompt using an @ tag, the same way you would mention someone in Slack. Made the product feel like it understood trading workflows instead of asking traders to abandon them.`,
+    description: `Every trader already had a watchlist in their broker. That habit was not going to go away. The thinking was not to build a competing watchlist but to make the existing habit work inside Draconic. Users save their instruments and can reference them directly inside any prompt using an @ tag, the same way you would mention someone in Slack. The decision to use @ tagging specifically came from wanting the interaction to feel native to how people already work in modern tools, not like something new they had to learn.`,
     image: '/images/activation-problem/watchlist.webp',
   },
   {
     name: 'Activation Email Sequences',
-    description: `The work did not stop at the product boundary. Built a full email automation system to reach users before they churned. A five-day onboarding sequence walked new users through the product gradually, one concept at a time. A separate activation email fired for anyone who signed up but never sent a query. A mid-funnel drop-off sequence targeted users who had sent a few prompts and gone quiet. Each email was written to drive a specific behaviour, not just remind someone the product existed.`,
+    description: `The thinking behind the email cadence was simple: sending everything at once would mean none of it landed. Users needed time to actually use the product between emails so that when the next one arrived, the concept in it would be immediately relevant to something they had already experienced. A five day onboarding sequence introduced one concept per day. A separate activation email fired for anyone who signed up but never sent a query. A mid-funnel drop-off sequence targeted users who had sent a few prompts and gone quiet. Each email was written to drive a specific behaviour at the exact moment that behaviour was most likely to happen.`,
     image: '/images/activation-problem/email.webp',
   },
 ]

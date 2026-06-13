@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
 import ActivationProblemDetail from './ActivationProblemDetail'
 import GrowthFromZeroDetail from './GrowthFromZeroDetail'
+import MakingTradersUnderstandAIDetail from './MakingTradersUnderstandAIDetail'
+import ShippingCreativeEndToEndDetail from './ShippingCreativeEndToEndDetail'
 
 type Category = 'product-growth' | 'side-projects'
 
@@ -426,9 +428,15 @@ export default function ProjectsGridScreen({ category, onBack }: Props) {
       {activeProject?.id === 'pg-1' && (
         <GrowthFromZeroDetail onClose={() => setActiveProject(null)} thumbnail={activeProject.thumbnail} />
       )}
+      {activeProject?.id === 'pg-2' && (
+        <MakingTradersUnderstandAIDetail onClose={() => setActiveProject(null)} thumbnail={activeProject.thumbnail} />
+      )}
+      {activeProject?.id === 'pg-3' && (
+        <ShippingCreativeEndToEndDetail onClose={() => setActiveProject(null)} thumbnail={activeProject.thumbnail} />
+      )}
 
       {/* Generic modal for cards without a detail page yet */}
-      {activeProject && !['pg-0', 'pg-1'].includes(activeProject.id) && (
+      {activeProject && !['pg-0', 'pg-1', 'pg-2', 'pg-3'].includes(activeProject.id) && (
         <ProjectModal project={activeProject} onClose={() => setActiveProject(null)} />
       )}
     </div>

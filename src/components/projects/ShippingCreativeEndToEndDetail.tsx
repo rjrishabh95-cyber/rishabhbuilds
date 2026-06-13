@@ -8,58 +8,92 @@ interface Props {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { value: '0 → 20,000+', label: 'Users Acquired' },
-  { value: '40%',          label: 'Acquisition Through Organic Channels' },
-  { value: '20+',          label: 'Platforms Listed On' },
+  { value: '3',           label: 'Video Formats Produced' },
+  { value: 'End to End',  label: 'Creative Ownership' },
+  { value: '0',           label: 'External Creative Agencies' },
 ]
 
-const PROBLEM = `When the growth engine needed to be built, nothing existed. No paid campaigns, no content calendar, no influencer relationships, no SEO foundation, no community presence. Draconic was a genuinely new product in a category that did not exist yet, an AI co-pilot for traders, which meant there was no established playbook to follow and no obvious audience to target.
+const PROBLEM = `Every channel being built simultaneously needed a constant supply of assets. Videos, creatives, a signup page, a website. None of it could be outsourced entirely because the product was too new and too nuanced for anyone outside the team to get it right. Everything had to be owned.`
 
-The challenge was not just acquiring users. It was finding and convincing an audience that had never used anything like this before, across every channel simultaneously, starting from zero.`
+const APPROACH_INTRO = ``
 
-const APPROACH_INTRO = `Every channel was built from scratch. Before anything was executed, a playbook was built for each one. Execution followed the playbook, and the playbook evolved based on what the data showed.`
+interface Feature {
+  name: string
+  description: string
+  image?: string
+  button?: { label: string; href: string }
+}
 
-const CHANNELS: { name: string; description: string; image?: string }[] = [
+const FEATURES: Feature[] = [
   {
-    name: 'Paid: Google and Meta',
-    description: `Built and ran Search, PMAX, and Meta campaigns simultaneously. The creative strategy started with a question: what does a trader who has never used AI actually need to hear before they would consider trying it? Three themes emerged from that research. Ask Before You Trade spoke to the trader who was making decisions on incomplete information. Institutional Access spoke to the retail trader who always felt locked out of the kind of analysis that professional desks had. See Beyond Price spoke to the trader who knew charts alone were not telling the full story. Each theme had its own visuals, ad copy, headlines, and description variations — 15 to 20 ads tested per campaign. Weekly optimization using Claude with MCP integration, pulling performance data and making changes based on what was working. Google Ads cost per lead came down to 47 INR.`,
+    name: 'Demo and Feature Videos',
+    description: `Started with scripting and storyboarding every video before recording anything. Screen recordings were captured using a dedicated recording tool, then edited in iMovie with zoom effects and cuts to keep the pacing tight. Voiceovers were generated using ElevenLabs and layered in with background music. Final polish happened in Canva: text overlays, transitions, visual consistency. Every video shipped end to end without an external production team.`,
+    image: '/images/shipping-creative-end-to-end/demo-feature-videos.webp',
+    button: {
+      label: 'Watch Playlist',
+      href: 'https://www.youtube.com/playlist?list=PLqsICc3ld83mwQGoXD6-Ja6JNx1_0rU4P',
+    },
+  },
+  {
+    name: 'Brand Videos',
+    description: `Watched 50 to 60 brand videos from companies like Apple and other top tier brands before writing a single word. The research informed every creative decision: what effects work, what pacing feels premium, what transitions communicate the right energy. Built a full storyboard using Pinterest references, scripted the complete video with scene by scene direction, specified every effect, every sound, every on-screen element, and handed the complete blueprint to a motion graphics team to execute.`,
+    image: '/images/shipping-creative-end-to-end/brand-videos.webp',
+  },
+  {
+    name: 'Social Media Carousels',
+    description: `Built a full content playbook defining the narrative structure, visual language, and story arc for every carousel format. Used Claude to ship the actual carousel content from the playbook. Measured performance every week: what formats got engagement, what topics resonated, what fell flat. Boosted what worked, iterated on what did not, and fed the learnings back into the next cycle.`,
+    image: '/images/shipping-creative-end-to-end/carousels.webp',
+  },
+  {
+    name: 'Ad Creatives',
+    description: `The creative strategy for paid ads was built around three themes developed from research into what resonates with traders. Every theme had its own visual direction, messaging, and creative treatment. Designed and shipped all creatives independently for both Google and Meta campaigns.`,
     image: '/images/growth-from-zero/google-ads.webp',
   },
   {
-    name: 'Twitter',
-    description: `Exported and analyzed the full tweet history of competitor AI companies and trading platforms using Claude before writing a single tweet. Built a monthly content calendar of 40 high-impact pieces across six formats based on what the analysis showed actually worked. High quality images generated and paired with every visual tweet. Every piece written to make users feel understood, not sold to.`,
-    image: '/images/growth-from-zero/twitter.webp',
+    name: 'Website and Signup Page',
+    description: `Owned all copy and visual direction on the Draconic website throughout. Every element on the site, from headline to microcopy, was written and maintained in house. The signup page was a separate project: built completely from scratch using Claude Code, with every design decision, layout choice, and line of copy owned end to end.`,
+    image: '/images/shipping-creative-end-to-end/website-signup-page.webp',
+    button: {
+      label: 'View Signup Page',
+      href: 'https://draconicsignuppage.vercel.app',
+    },
   },
   {
-    name: 'Content',
-    description: `Built three separate playbooks before posting anything: one for carousels, one for statics, one for reels. A unified monthly content calendar tied everything into a four week posting plan. At the end of every month, performance was analyzed and the next month doubled down on what worked.`,
-    image: '/images/growth-from-zero/content.webp',
-  },
-  {
-    name: 'Influencer Partnerships',
-    description: `Partnered with influencers across YouTube, Telegram, Instagram, and Reddit through both agencies and direct outreach. The decision to evaluate every partnership on audience fit rather than follower count came from a simple insight: a trading platform needs users who actually trade, not users who happen to follow a finance page. A smaller channel with an engaged community of active traders was worth more than a large channel with passive followers.`,
-    image: '/images/growth-from-zero/influencers.webp',
-  },
-  {
-    name: 'SEO, AEO and PR',
-    description: `Built a keyword-driven blog playbook with every article written to be SEO friendly and backed with backlinks. A separate playbook was built for what to write on each listing platform. Listed Draconic on more than 20 discovery platforms including Product Hunt and BetaList. Articles placed through PR agencies for press coverage and high quality backlinks simultaneously.`,
-    image: '/images/growth-from-zero/seo-pr.webp',
-  },
-  {
-    name: 'Reddit',
-    description: `Ran multiple Reddit campaigns across trading communities to build organic presence. Indian Street Bets was the anchor partnership — the largest trading community on Reddit — securing a pinned post and logo placement as the community cover photo. The logic was to go where the highest concentration of active traders already were, establish credibility there first, and use that as the foundation for broader community presence.`,
-    image: '/images/growth-from-zero/reddit.webp',
-  },
-  {
-    name: 'Telegram Community',
-    description: `Built a content playbook for the Telegram community covering what gets posted, when, and why. Treated as a product touchpoint, not a broadcast channel.`,
+    name: 'Interactive Prototypes',
+    description: `Every product feature was prototyped before it went to design. Not flat wireframes but fully interactive prototypes showing every interaction state, every edge case, every flow. The prototypes were the communication layer between idea and execution: design used them to understand how something should feel, frontend used them alongside documentation to understand what needed to be built. They compressed weeks of back and forth into days.`,
+    image: '/images/shipping-creative-end-to-end/prototypes.webp',
   },
 ]
 
-const RESULT = `Built the entire growth engine from zero across every channel simultaneously. Organic and content channels drove 40% of all customer acquisition. Google Ads cost per lead came down to 47 INR. The growth was not the result of one channel working. It was the result of every channel being built on a playbook, executed consistently, and optimized based on data every single month.`
+const RESULT = `Every asset that went out carried the same level of intentionality: scripted, storyboarded, measured, and iterated. The creative output was not a side function. It was the engine that made every other channel work.`
 
 // ─── Sub-components ───────────────────────────────────────────────────────────
 
+function ExternalButton({ label, href }: { label: string; href: string }) {
+  const isExternal = href !== '#'
+  return (
+    <a
+      href={href}
+      {...(isExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+      style={{
+        display: 'inline-block',
+        marginTop: '1.25rem',
+        fontFamily: '"JetBrains Mono", monospace',
+        fontSize: '12px',
+        color: '#00FF41',
+        background: '#0A0A0A',
+        border: '1px solid #00FF41',
+        borderRadius: 0,
+        padding: '12px 24px',
+        textDecoration: 'none',
+        lineHeight: 1,
+        cursor: 'pointer',
+      }}
+    >
+      {label}
+    </a>
+  )
+}
 
 function SectionHeading({ children }: { children: string }) {
   return (
@@ -102,7 +136,7 @@ function Prose({ text }: { text: string }) {
 
 // ─── Main ─────────────────────────────────────────────────────────────────────
 
-export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
+export default function ShippingCreativeEndToEndDetail({ onClose, thumbnail }: Props) {
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === 'Escape') onClose()
@@ -160,7 +194,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
             lineHeight: 1,
           }}
         >
-          Draconic AI · Growth
+          Draconic AI · Creative
         </span>
       </div>
 
@@ -169,7 +203,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
         <div style={{ padding: '4rem 2rem 6rem' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto' }}>
 
-          {/* Hero image — constrained to content column */}
+          {/* Hero image */}
           {thumbnail && (
             <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', overflow: 'hidden', marginBottom: '3rem' }}>
               <img
@@ -200,7 +234,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
               marginBottom: '3rem',
             }}
           >
-            Growth from Zero
+            Shipping Creative End to End
           </h1>
 
           {/* Stats row */}
@@ -251,13 +285,15 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
           {/* The Approach */}
           <section style={{ marginBottom: '4rem' }}>
             <SectionHeading>The Approach</SectionHeading>
-            <div style={{ marginBottom: '3rem' }}>
-              <Prose text={APPROACH_INTRO} />
-            </div>
+            {APPROACH_INTRO && (
+              <div style={{ marginBottom: '3rem' }}>
+                <Prose text={APPROACH_INTRO} />
+              </div>
+            )}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
-              {CHANNELS.map((channel) => (
-                <div key={channel.name}>
+              {FEATURES.map((feature) => (
+                <div key={feature.name}>
                   <h3
                     style={{
                       fontFamily: '"EB Garamond", serif',
@@ -268,7 +304,7 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                       marginBottom: '0.75rem',
                     }}
                   >
-                    {channel.name}
+                    {feature.name}
                   </h3>
                   <p
                     style={{
@@ -278,12 +314,12 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                       lineHeight: 1.8,
                     }}
                   >
-                    {channel.description}
+                    {feature.description}
                   </p>
-                  {channel.image ? (
+                  {feature.image && (
                     <img
-                      src={channel.image}
-                      alt={channel.name}
+                      src={feature.image}
+                      alt={feature.name}
                       style={{
                         display: 'block',
                         width: '100%',
@@ -292,7 +328,10 @@ export default function GrowthFromZeroDetail({ onClose, thumbnail }: Props) {
                         margin: '1.5rem auto 0',
                       }}
                     />
-                  ) : null}
+                  )}
+                  {feature.button && (
+                    <ExternalButton label={feature.button.label} href={feature.button.href} />
+                  )}
                 </div>
               ))}
             </div>
